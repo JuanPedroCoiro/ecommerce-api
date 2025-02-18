@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "title": "Smartphone X",
+    "description": "Un teléfono inteligente de última generación con pantalla AMOLED.",
+    "code": "P001",
+    "price": 799.99,
+    "status": true,
+    "stock": 50,
+    "category": "Electrónica",
+    "thumbnails": [
+      "img/phone1.jpg",
+      "img/phone2.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Auriculares Inalámbricos",
+    "description": "Auriculares con cancelación de ruido y sonido envolvente.",
+    "code": "P003",
+    "price": 199.99,
+    "status": true,
+    "stock": 100,
+    "category": "Electrónica",
+    "thumbnails": [
+      "img/headphones1.jpg",
+      "img/headphones2.jpg"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Smartwatch Fitness",
+    "description": "Reloj inteligente con monitor de ritmo cardíaco y GPS integrado.",
+    "code": "P004",
+    "price": 149.99,
+    "status": true,
+    "stock": 75,
+    "category": "Electrónica",
+    "thumbnails": [
+      "img/watch1.jpg",
+      "img/watch2.jpg"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Tablet Lite",
+    "description": "Tablet ligera y portátil con pantalla HD de 10 pulgadas.",
+    "code": "P005",
+    "price": 299.99,
+    "status": true,
+    "stock": 40,
+    "category": "Electrónica",
+    "thumbnails": [
+      "img/tablet1.jpg",
+      "img/tablet2.jpg"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Cámara DSLR",
+    "description": "Cámara réflex digital con lente intercambiable y 24MP.",
+    "code": "P006",
+    "price": 899.99,
+    "status": true,
+    "stock": 20,
+    "category": "Electrónica",
+    "thumbnails": [
+      "img/camera1.jpg",
+      "img/camera2.jpg"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Altavoz Bluetooth",
+    "description": "Altavoz portátil con sonido estéreo y resistencia al agua.",
+    "code": "P007",
+    "price": 79.99,
+    "status": true,
+    "stock": 60,
+    "category": "Electrónica",
+    "thumbnails": [
+      "img/speaker1.jpg",
+      "img/speaker2.jpg"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Teclado Mecánico",
+    "description": "Teclado para gamers con switches mecánicos y retroiluminación RGB.",
+    "code": "P008",
+    "price": 129.99,
+    "status": true,
+    "stock": 45,
+    "category": "Electrónica",
+    "thumbnails": [
+      "img/keyboard1.jpg",
+      "img/keyboard2.jpg"
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Monitor Curvo",
+    "description": "Monitor curvo de 27 pulgadas con resolución 4K y 144Hz.",
+    "code": "P009",
+    "price": 499.99,
+    "status": true,
+    "stock": 25,
+    "category": "Electrónica",
+    "thumbnails": [
+      "img/monitor1.jpg",
+      "img/monitor2.jpg"
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Impresora Multifunción",
+    "description": "Impresora que imprime, escanea y copia con conectividad Wi-Fi.",
+    "code": "P010",
+    "price": 199.99,
+    "status": true,
+    "stock": 35,
+    "category": "Electrónica",
+    "thumbnails": [
+      "img/printer1.jpg",
+      "img/printer2.jpg"
+    ]
+  },
+  {
+    "title": "Pelota cambiada otra vez",
+    "description": "Pelota de futbol sala",
+    "code": "P011",
+    "price": 199.99,
+    "status": true,
+    "stock": 200,
+    "category": "Deportes",
+    "thumbnails": [
+      "img/pelota1.jpg",
+      "img/pelota2.jpg"
+    ],
+    "id": 11
+  }
+]
