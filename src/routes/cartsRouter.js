@@ -7,10 +7,8 @@ const cartManager = new CartManager();
 
 // AÑADIR NUEVO CARRITO
 router.post("/", async (req, res) => {
-  const productsToAdd = req.body;
   try {
-    const newCart = await cartManager.addCart(productsToAdd);
-    console.log(newCart);
+    const newCart = await cartManager.addCart();
     res.status(201).json(newCart);
   } catch (error) {
     res.status(500).json({ error: "Error al crear carrito" });
@@ -34,7 +32,6 @@ router.post("/:cid/product/:pid", async (req, res) => {
   const productId = parseInt(req.params.pid);
   try {
     const updatedCart = await cartManager.addProductToCart(productId, cartId);
-    console.log(updatedCart, "updatedcart en router");
     res.status(200).json({
       message: "Producto agregado al carrito correctamente",
       cart: updatedCart,

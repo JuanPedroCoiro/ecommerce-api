@@ -1,6 +1,9 @@
 // IMPORTAR MODULOS
 const fs = require("fs").promises;
 const path = require("path");
+const ProductManager = require("./ProductManager");
+// INSTANCIAR PRODUCT MANAGER
+const productManager = new ProductManager();
 
 class CartManager {
   constructor() {
@@ -32,18 +35,16 @@ class CartManager {
   }
 
   // CREAR CARRITO
-  async addCart(products) {
+  async addCart() {
     try {
       let carts = await this.loadCarts();
       let newCart;
-      if (carts.length == 0) {
-        newCart = { id: 1, products };
-      } else {
-        newCart = {
-          id: carts.length + 1,
-          products,
-        };
-      }
+      let products = [];
+      // ASIGNAR ID AL CARRITO
+      const maxId =
+        carts.length > 0 ? Math.max(...carts.map((c) => c.id)) : 0;
+      newCart = {id: maxId + 1, products};
+
       carts.push(newCart);
       await this.saveCarts(carts);
       return newCart;
@@ -56,12 +57,8 @@ class CartManager {
   async getCartProducts(id) {
     try {
       const carts = await this.loadCarts();
-      for (let i = 0; i < carts.length; i++) {
-        let cart = carts[i];
-        if (cart.id == id) {
-          return cart.products;
-        }
-      }
+      const selectedCart = carts.find((cart) => cart.id == id);
+      return selectedCart ? selectedCart.products : undefined;
     } catch (error) {
       console.error("Error al obtener el carrito: ", error);
     }
@@ -70,10 +67,18 @@ class CartManager {
   async addProductToCart(pid, cid) {
     try {
       const carts = await this.loadCarts();
+      const products = await productManager.loadProducts();
+      // VERIFICAR SI EL PRODUCTO EXISTE
+      const productExists = products.some(product => product.id === pid);
+      if(!productExists){
+        throw new Error(`El producto con ID ${pid} no existe.`);
+      }
       // BUSCAR EL CARRITO POR ID UTILIZANDO FIND
       const cart = carts.find((cart) => cart.id == cid);
       // BUSCAR SI EXISTE EL PRODUCTO EN EL CARRITO
-      const existingProduct = cart.products.find((product) => product.product == pid);
+      const existingProduct = cart.products.find(
+        (product) => product.product == pid
+      );
       if (existingProduct) {
         existingProduct.quantity += 1;
       } else {
@@ -83,6 +88,7 @@ class CartManager {
       return cart;
     } catch (error) {
       console.error("Error al añadir producto al carrito: ", error);
+      throw new Error(error.message);
     }
   }
 }

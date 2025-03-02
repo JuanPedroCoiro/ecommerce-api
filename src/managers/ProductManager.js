@@ -46,14 +46,14 @@ class ProductManager {
   async getProductById(id) {
     try {
       let products = await this.loadProducts();
-      for (let i = 0; i < products.length; i++) {
-        let product = products[i];
-        if (product.id == id) {
-          return product;
-        }
+      let product = products.find(product => product.id == id);
+      if(!product){
+        throw new Error("No se encontro un producto con ese id");
       }
+      return product;
     } catch (error) {
       console.error("Error al obtener el producto: ", error);
+      throw error;
     }
   }
 
@@ -67,6 +67,7 @@ class ProductManager {
         !product.code ||
         !product.price ||
         !product.status ||
+        product.status === undefined ||
         !product.stock ||
         !product.category ||
         !product.thumbnails
@@ -74,20 +75,22 @@ class ProductManager {
         throw new Error("Todos los campos son obligatorios");
       }
   
-      // Validar que el código del producto no esté repetido
+      // VALIDAR QUE EL CODIGO DEL PRODUCTO NO ESTE REPETIDO
       const existingProduct = products.find((p) => p.code === product.code);
       if (existingProduct) {
         throw new Error(`El código ${product.code} ya está en uso`);
       }
-      if (products.length == 0) {
-        product.id = 1;
-      } else {
-        product.id = products.length + 1;
-      }
+      // ASIGNAR ID AL PRODUCTO
+      const maxId = products.length > 0 ? Math.max(...products.map(p => p.id)) : 0;
+      product.id = maxId + 1;
+      // GUARDAR PRODUCTO EN LA LISTA
       products.push(product);
       await this.saveProducts(products);
+
+      return product;
     } catch (error) {
       console.error("Error al añadir producto: ", error);
+      throw new Error(error.message);
     }
   }
 
@@ -95,15 +98,13 @@ class ProductManager {
   async updateProduct(id, updatedProduct) {
     try {
       const products = await this.loadProducts();
-      let retorno;
-      for (let i = 0; i < products.length; i++) {
-        if (products[i].id == id) {
-          products[i] = { ...products[i], ...updatedProduct };
-          retorno = products[i];
-        }
+      const product = products.find(p => p.id == id);
+      if(product){
+        Object.assign(product, updatedProduct);
+        await this.saveProducts(products);
+        return product;
       }
-      await this.saveProducts(products);
-      return retorno;
+      return null;
     } catch (error) {
       console.error("Error al actualizar producto: ", error);
     }
