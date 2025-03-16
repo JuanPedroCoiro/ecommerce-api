@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/server.js",
-    "dev": "nodemon src/server.js"
+    "dev": "node --watch src/server.js"
   },
   "keywords": [],
   "author": "",
@@ -14,7 +14,9 @@
   "type": "commonjs",
   "dependencies": {
     "express": "^4.21.2",
-    "fs": "^0.0.1-security"
+    "express-handlebars": "^8.0.1",
+    "fs": "^0.0.1-security",
+    "socket.io": "^4.8.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"

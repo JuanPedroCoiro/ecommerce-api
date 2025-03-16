@@ -140,17 +140,14 @@
     "id": 11
   },
   {
-    "title": "Pelota",
-    "description": "Pelota de futbol sala",
-    "code": "P012",
-    "price": 199.99,
+    "title": "Coca-Cola",
+    "description": "Coca-Cola helada. ",
+    "price": 100,
+    "code": "C10C",
+    "stock": 200,
+    "category": "Bebidas",
     "status": true,
-    "stock": 20,
-    "category": "Deportes",
-    "thumbnails": [
-      "img/pelota1.jpg",
-      "img/pelota2.jpg"
-    ],
+    "thumbnails": [],
     "id": 12
   }
 ]

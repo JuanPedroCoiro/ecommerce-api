@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>E-commerce</title>
+</head>
+<body>
+    <h1>Real Time Products</h1>
+    <div id="productList" class="products-container">
+        {{#each products}}
+            <div class="product">
+                <h3>{{this.title}}</h3>
+                <p>${{this.price}}</p>
+                <p>{{this.description}}</p>
+                <button onclick="deleteProduct({{this.id}})">Eliminar</button>
+            </div>
+        {{/each}}
+    </div>
+
+    <h2>Agregar producto</h2>
+    <form id="addProductForm" class="form-container">
+        <input type="text" id="title" placeholder="Title" required>
+        <input type="text" id="description" placeholder="Description" required>
+        <input type="number" id="price" placeholder="Price" required>
+        <input type="text" id="code" placeholder="Code" required>
+        <input type="number" id="stock" placeholder="Stock" required>
+        <input type="text" id="category" placeholder="Category" required>
+        <button type="submit">Agregar</button>
+    </form>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/script.js"></script>
+</body>
+</html>
